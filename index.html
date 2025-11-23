@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vivek's Restaurant</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent: #ff4d6d;
+      --accent-dark: #d6336c;
+      --muted: #6c757d;
+      --card-bg: #fff;
+    }
+
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f6f7fb;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    /* ---------- Header / Navbar ---------- */
+    .navbar{
+      background: linear-gradient(90deg, rgba(255,77,109,0.06), rgba(255,77,109,0.02));
+      backdrop-filter: blur(4px);
+      padding: .6rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(3,10,18,0.04);
+    }
+    .navbar-brand{
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .nav-link{
+      color: #333 !important;
+      font-weight: 600;
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      transition: .18s ease;
+    }
+    .nav-link:hover{ background: rgba(255,77,109,0.08); color: var(--accent-dark) !important; }
+
+    /* ---------- Hero ---------- */
+    .hero{
+      padding: 48px 0;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+      gap: 28px;
+      align-items: center;
+    }
+    .hero .badge{
+      display:inline-block;
+      background: rgba(255,77,109,0.12);
+      color: var(--accent);
+      padding: .35rem .6rem;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hero h1{ font-size: 2.2rem; margin-bottom: .5rem; }
+    .hero p{ color: var(--muted); margin-bottom: 1rem; }
+
+    .hero-cta .btn-primary{
+      background: linear-gradient(90deg,var(--accent),var(--accent-dark));
+      border: none;
+      padding: .7rem 1.1rem;
+      box-shadow: 0 8px 22px rgba(214,51,108,0.12);
+    }
+
+    .hero-card{
+      background: linear-gradient(180deg,#fff, #fff);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(3,10,18,0.06);
+    }
+    .hero-card img{ width:100%; height:220px; object-fit:cover; border-radius:10px; }
+
+    /* ---------- Sections ---------- */
+    section{ padding: 48px 0; }
+    .section-title{ margin-bottom: 28px; }
+    .muted { color: var(--muted); }
+
+    /* ---------- Menu cards ---------- */
+    .menu-card{
+      border-radius: 12px;
+      background: var(--card-bg);
+      padding: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+    .menu-card img{ width:100%; height:160px; object-fit:cover; border-radius:8px; }
+    .price{
+      font-size: 1.05rem;
+      font-weight:700;
+      color: var(--accent-dark);
+    }
+
+    /* ---------- Gallery ---------- */
+    .gallery img{ width:100%; height:160px; object-fit:cover; border-radius:8px; transition: .25s; }
+    .gallery img:hover{ transform: scale(1.03); box-shadow: 0 12px 30px rgba(3,10,18,0.08); }
+
+    /* ---------- Footer ---------- */
+    footer{ padding: 28px 0; color: #555; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 992px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero-card img{ height:180px; }
+    }
+
+    @media (max-width: 576px){
+      .nav-link { font-size: .95rem; }
+      .hero h1{ font-size: 1.6rem; }
+    }
+
+    /* small helpers */
+    .tag { font-size: .82rem; padding: 4px 8px; border-radius: 999px; background: rgba(0,0,0,0.04); }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg container my-3">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=60&auto=format&fit=crop&crop=faces" alt="logo" width="40" height="40" style="border-radius:8px;object-fit:cover;">
+      Vivek's Restaurant
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO / HOME -->
+  <main class="container">
+    <section id="home" class="hero">
+      <div>
+        <span class="badge">Fresh • Tasty • Local</span>
+        <h1>Welcome to Vivek's Restaurant</h1>
+        <p class="muted">Authentic flavours, warm service, and fast delivery. We make your favorite pizza, burgers and South-Indian classics with care. Order now or come visit our cozy place.</p>
+
+        <div class="d-flex gap-2 hero-cta">
+          <!-- WhatsApp order link: update number in code if needed -->
+          <a class="btn btn-primary" href="https://wa.me/917567630354?text=Hi%20Vivek%20restaurant,%20I%20want%20to%20order" target="_blank">Order on WhatsApp</a>
+          <a class="btn btn-outline-secondary" href="#menu">View Menu</a>
+        </div>
+
+        <div class="mt-4">
+          <small class="tag">Open:</small>
+          <small class="ms-2 muted">Mon–Sun • 11:00 AM – 11:00 PM</small>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1601924582975-6c7f6a3e0b3b?q=80&w=1200&auto=format&fit=crop" alt="dish">
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            <h5 class="mb-0">Chef's Special Combo</h5>
+            <small class="muted">Pizza + Burger + Fries</small>
+          </div>
+          <div class="text-end">
+            <div class="price">₹ 349</div>
+            <a class="btn btn-sm btn-outline-primary mt-2" href="https://wa.me/917567630354?text=I%20want%20the%20Chef's%20Special%20Combo">Order</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h3 class="section-title">About Us</h3>
+          <p class="muted">Vivek's Restaurant serves fresh, delicious meals inspired by local tastes and classic recipes. We prioritise quality ingredients, friendly service and timely delivery. Whether you’re stopping by for a quick bite or ordering for a family dinner — we’ve got you covered.</p>
+
+          <ul>
+            <li><strong>Fresh ingredients</strong> sourced from local vendors.</li>
+            <li><strong>Hygienic kitchen</strong> and trained staff.</li>
+            <li><strong>Easy ordering</strong> — phone, WhatsApp or visit us.</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="menu-card p-3 text-center">
+                <img src="https://images.unsplash.com/photo-1606755962772-6d6a4c8f6f00?q=80&w=800&auto=format&fit=crop" alt="pizza">
+                <h6 class="mt-2">Quality Ingredients</h6>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="menu-card p-3 text-center">
+                <img src="https://images.unsplash.com/photo-1606312619342-02c7a5be6d4f?q=80&w=800&auto=format&fit=crop" alt="service">
+                <h6 class="mt-2">Fast Delivery</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+      <div class="d-flex justify-content-between align-items-end section-title">
+        <div>
+          <h3>Menu</h3>
+          <p class="muted mb-0">Explore our popular dishes. Tap “Order” to message us on WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="row gy-4">
+        <!-- Pizza -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=1200&auto=format&fit=crop" alt="pizza">
+            <div class="d-flex justify-content-between align-items-start mt-3">
+              <div>
+                <h5 class="mb-0">Margherita Pizza</h5>
+                <small class="muted">Classic cheese & tomato</small>
+              </div>
+              <div class="text-end">
+                <div class="price">₹ 199</div>
+                <a class="btn btn-sm btn-outline-success mt-2" href="https://wa.me/917567630354?text=I%20want%20to%20order%20Margherita%20Pizza" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1200&auto=format&fit=crop" alt="burger">
+            <div class="d-flex justify-content-between align-items-start mt-3">
+              <div>
+                <h5 class="mb-0">Classic Burger</h5>
+                <small class="muted">Juicy patty with fresh toppings</small>
+              </div>
+              <div class="text-end">
+                <div class="price">₹ 149</div>
+                <a class="btn btn-sm btn-outline-success mt-2" href="https://wa.me/917567630354?text=I%20want%20to%20order%20Classic%20Burger" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dosa/Thosa -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1604908177522-0f4c9fb1a7e9?q=80&w=1200&auto=format&fit=crop" alt="dosa">
+            <div class="d-flex justify-content-between align-items-start mt-3">
+              <div>
+                <h5 class="mb-0">Masala Dosa</h5>
+                <small class="muted">Crispy dosa with spiced potato</small>
+              </div>
+              <div class="text-end">
+                <div class="price">₹ 129</div>
+                <a class="btn btn-sm btn-outline-success mt-2" href="https://wa.me/917567630354?text=I%20want%20to%20order%20Masala%20Dosa" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- More items (repeatable) -->
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1548372290-2f7c1b1d3fd7?q=80&w=1200&auto=format&fit=crop" alt="pasta">
+            <div class="d-flex justify-content-between align-items-start mt-3">
+              <div>
+                <h5 class="mb-0">Creamy Pasta</h5>
+                <small class="muted">Velvety white sauce</small>
+              </div>
+              <div class="text-end">
+                <div class="price">₹ 179</div>
+                <a class="btn btn-sm btn-outline-success mt-2" href="https://wa.me/917567630354?text=I%20want%20to%20order%20Creamy%20Pasta" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1546069901-eacef0df6022?q=80&w=1200&auto=format&fit=crop" alt="salad">
+            <div class="d-flex justify-content-between align-items-start mt-3">
+              <div>
+                <h5 class="mb-0">Fresh Salad</h5>
+                <small class="muted">Crisp seasonal veggies</small>
+              </div>
+              <div class="text-end">
+                <div class="price">₹ 99</div>
+                <a class="btn btn-sm btn-outline-success mt-2" href="https://wa.me/917567630354?text=I%20want%20to%20order%20Fresh%20Salad" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop" alt="dessert">
+            <div class="d-flex justify-content-between align-items-start mt-3">
+              <div>
+                <h5 class="mb-0">Dessert</h5>
+                <small class="muted">Sweet finish</small>
+              </div>
+              <div class="text-end">
+                <div class="price">₹ 79</div>
+                <a class="btn btn-sm btn-outline-success mt-2" href="https://wa.me/917567630354?text=I%20want%20to%20order%20Dessert" target="_blank">Order</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h3 class="section-title">Gallery</h3>
+      <p class="muted">A few snapshots from our kitchen and happy customers.</p>
+
+      <div class="row g-3 gallery mt-3">
+        <div class="col-sm-6 col-md-4"><img src="https://images.unsplash.com/photo-1541542684-0b0b3f02f8b2?q=80&w=1000&auto=format&fit=crop" alt=""></div>
+        <div class="col-sm-6 col-md-4"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1000&auto=format&fit=crop" alt=""></div>
+        <div class="col-sm-6 col-md-4"><img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?q=80&w=1000&auto=format&fit=crop" alt=""></div>
+        <div class="col-sm-6 col-md-4"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1000&auto=format&fit=crop" alt=""></div>
+        <div class="col-sm-6 col-md-4"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?q=80&w=1000&auto=format&fit=crop" alt=""></div>
+        <div class="col-sm-6 col-md-4"><img src="https://images.unsplash.com/photo-1541542684-0b0b3f02f8b2?q=80&w=1000&auto=format&fit=crop" alt=""></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="section-title">Contact & Location</h3>
+          <p class="muted">Call or message on WhatsApp to place an order or for reservations.</p>
+
+          <ul class="list-unstyled">
+            <li><strong>Phone / WhatsApp:</strong> <a href="tel:+917567630354">+91 75676 30354</a></li>
+            <li><strong>Email:</strong> <a href="mailto:vivek@example.com">vivek@example.com</a></li>
+            <li><strong>Address:</strong> Kamani Street, Pratab Ray Arts College area, Amreli</li>
+          </ul>
+
+          <div class="mt-3">
+            <a class="btn btn-success" href="https://wa.me/917567630354?text=Hi%20Vivek%2C%20I%20want%20to%20place%20an%20order" target="_blank">Order via WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h5>Send a message</h5>
+          <form id="contactForm" class="mt-2">
+            <div class="mb-2">
+              <input class="form-control" type="text" id="name" placeholder="Your name" required>
+            </div>
+            <div class="mb-2">
+              <input class="form-control" type="tel" id="phone" placeholder="Phone or WhatsApp" required>
+            </div>
+            <div class="mb-2">
+              <textarea class="form-control" id="message" rows="4" placeholder="Message (order or question)"></textarea>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="button" id="whatsBtn" class="btn btn-outline-success">Send on WhatsApp</button>
+            </div>
+            <small class="form-text text-muted mt-2">Note: "Send" opens an email client. "Send on WhatsApp" prepares a message in WhatsApp.</small>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h3 class="section-title">FAQ</h3>
+      <div class="accordion" id="faqAcc">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Do you deliver?</button>
+          </h2>
+          <div id="q1" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+            <div class="accordion-body">Yes — we deliver across the city. Delivery time depends on location (usually 25–45 mins).</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">What payment methods do you accept?</button>
+          </h2>
+          <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+            <div class="accordion-body">We accept cash on delivery, UPI, and online payment (pay link on WhatsApp).</div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3">Can I reserve a table?</button>
+          </h2>
+          <div id="q3" class="accordion-collapse collapse" data-bs-parent="#faqAcc">
+            <div class="accordion-body">Yes — message us on WhatsApp with date, time and number of people and we’ll confirm.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <small>&copy; <span id="year"></span> Vivek's Web Development — All rights reserved.</small>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <small class="muted">Kamani Street, Pratab Ray Arts College, Amreli</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // put current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // contact form: open mail client on submit (lightweight)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Website contact from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '%0APhone: ' + phone + '%0A%0A' + message);
+      window.location.href = 'mailto:vivek@example.com?subject=' + subject + '&body=' + body;
+    });
+
+    // Send WhatsApp prepared message
+    document.getElementById('whatsBtn').addEventListener('click', function(){
+      const name = encodeURIComponent(document.getElementById('name').value.trim() || 'Customer');
+      const phone = encodeURIComponent(document.getElementById('phone').value.trim() || '');
+      const message = encodeURIComponent(document.getElementById('message').value.trim() || 'Hello, I want to order.');
+      // NOTE: Replace phone number below if you want a different WhatsApp number.
+      const phoneNumber = '917567630354';
+      const text = encodeURIComponent('Name: ' + name + '\\nPhone: ' + phone + '\\n\\n' + message);
+      window.open('https://wa.me/' + phoneNumber + '?text=' + text, '_blank');
+    });
+  </script>
+</body>
+</html>
